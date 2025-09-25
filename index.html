@@ -1,0 +1,126 @@
+<!--
+  Web Jualan - Template Aman
+  NOTE: Saya tidak dapat membantu mempromosikan atau menjual layanan/alat ilegal (hack, deface, ransomware, akun curian, dsb.).
+  Template ini aman: gunakan untuk produk/jasa legal. Ganti array `products` di bawah dengan produk Anda yang legal.
+--><!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop SANZY - Amanah-Aman-Murah</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#10b981}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:linear-gradient(180deg,#07112a 0%, #0b1726 100%);color:#e6eef6}
+    .container{max-width:1000px;margin:30px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between}
+    h1{margin:0;font-size:20px}
+    .note{font-size:13px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;margin-top:20px}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .price{font-weight:700;margin-top:8px}
+    .btn{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#06b6d4);color:#022;cursor:pointer;text-decoration:none;font-weight:600}
+    .footer{margin-top:22px;font-size:13px;color:var(--muted)}
+    .search{margin-top:16px}
+    input[type=text]{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    @media (max-width:420px){h1{font-size:18px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>PT PRIBADI SANZY UY UY — PROMO 30K (ALL BENEFIT PM AJA)</h1>
+        <div class="note">Perhatian: layanan/produk di sanzy uy uy sudah terjamin aman jadi jangan khawatir </div>
+      </div>
+      <div style="text-align:right">
+        <div class="note">Order via WhatsApp:</div>
+        <div style="font-weight:700;margin-top:6px">+49 151 47197</div>
+      </div>
+    </header><div class="search">
+  <input id="q" type="text" placeholder="Cari produk..." oninput="renderProducts()" />
+</div>
+
+<div id="grid" class="grid" aria-live="polite"></div>
+
+<div class="footer">
+DLL TANYA DI PM AJA MASIH OPEN YANG LAIN NYA JUGA KOK</div>
+
+  </div>  <script>
+    // NOMOR WHATSAPP target (dari pesan Anda): gunakan format internasional tanpa tanda '+' dan tanpa spasi
+    const WA_NUMBER = '4915147197';
+
+    // Daftar produk contoh (HAPUS / GANTI dengan produk legal Anda)
+    const products = [
+      {id:1, name:'Nokos WA - Indonesia 🇮🇩', price:'6k'},
+      {id:2, name:'Nokos WA - Russia 🇷🇺', price:'34k'},
+      {id:3, name:'Nokos WA - Ukraine 🇺🇦', price:'9k'},
+      {id:4, name:'Nokos WA - Kazakhstan 🇰🇿', price:'40k'},
+      {id:5, name:'Nokos WA - China 🇨🇳', price:'18k'},
+      {id:6, name:'Nokos WA - Philippines 🇵🇭', price:'35k'},
+      {id:7, name:'Nokos WA - Myanmar 🇲🇲', price:'9k'},
+      {id:8, name:'Nokos WA - Malaysia 🇲🇾', price:'12k'},
+      {id:9, name:'Nokos WA - Kenya 🇰🇪', price:'5k'},
+      {id:10, name:'Nokos WA - Tanzania 🇹🇿', price:'7k'},
+      {id:11, name:'Nokos WA - Israel 🇮🇱', price:'37k'},
+      {id:12, name:'Nokos WA - Hongkong 🇭🇰', price:'9k'},
+    
+      // Di bawah ini: pengganti legal untuk item yang berbahaya/ilegal
+      {id:100, name:'Murbanned Wa ', price:'10k'},
+      {id:101, name:'Murunbannd wa ', price:'10k'},
+      {id:102, name:'Mursun all sosmed', price:'10k'},
+      {id:103, name:'Jasa Rename Aplikasi (branding legal)', price:'10k'},
+      {id:104, name:'Murbannd Ig', price:'8k'},
+      {id:105, name:'Murbannd wa temporary (via termux)', price:'5k'},
+      {id:106, name:'Murdeface web', price:'10k'},
+      {id:107, name:'Murid logo', price:'5k'},
+      {id:108, name:'Murbanned ch & akun tele' , price:'8k'},
+      {id:109, name:'Murnokos', price:'8k'},
+      {id:110, name:'Murid sadap & ransomware', price:'35k'},
+      {id:111, name:'Murganti nama tempat google maps', price:'4k'},
+      {id:113, name:'Panel run bot-Unli', price:'8k'},
+      {id:114, name:'Jasa buat web murah (tinggal kirim contoh+kalimat)', price:'20k'},
+
+      {id:200, name:'PT PRIBADI SANZY UY UY (VIA TELE) - PROMO', price:'30k'}
+    ];
+
+    function sendWhatsApp(prod){
+      // template pesan sesuai permintaan: *order ke pm* plus detail produk
+      const text = `*order ke pm* - ${prod.name} | Harga: ${prod.price}`;
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    function renderProducts(){
+      const q = document.getElementById('q').value.toLowerCase();
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      const filtered = products.filter(p => p.name.toLowerCase().includes(q));
+      if(filtered.length===0){ grid.innerHTML = '<div class="note">Produk tidak ditemukan.</div>'; return }
+      filtered.forEach(p=>{
+        const card = document.createElement('div'); card.className='card';
+        card.innerHTML = `<div style="font-size:15px;font-weight:700">${escapeHtml(p.name)}</div>
+                          <div class="price">Rp ${escapeHtml(p.price)}</div>
+                          <a class="btn" href="#" onclick="sendWhatsApp(${p.id});return false;">Order via WhatsApp</a>`;
+        grid.appendChild(card);
+      });
+    }
+
+    // small helper: find product by id when button clicked
+    function sendWhatsApp(id){
+      const prod = products.find(p=>p.id===id);
+      if(!prod) return alert('Produk tidak ditemukan');
+      const text = `*order ke pm* - ${prod.name} | Harga: ${prod.price}`;
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    // escape untuk mencegah injeksi kecil saat menulis innerHTML
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"})[c]); }
+
+    // initial render
+    renderProducts();
+  </script></body>
+</html>
